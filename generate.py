@@ -3,21 +3,19 @@
 import random
 import sys
 
+def usage():
+    print 'ERROR: You must pass at least and no more than one argument in the form of a formatted file'
+    print ''
+    print 'Usage:'
+    print '\t./generate.py <file with formatted list of names>'
+    sys.exit()
+
+if len(sys.argv) != 2:
+    usage()
+
 students = []
 gds = []
 constants = []
-
-def printAll(self):
-    for s in students:
-        print s.name
-
-def printLeaders(self):
-    for l in leaders:
-        print l.name
-
-def printGDS(self):
-    for g in gds:
-        print g.name
 
 def getStudentByNumber(num):
     for student in students:
@@ -44,13 +42,18 @@ class Student:
             print 'Exiting...'
 
 
-for line in open('rosters/tmp-master-roster.txt'):
-    line = line.strip('\n')
-    person = line.split('|')
-    if len(person) == 2:
-        s = Student(person[1], person[0], -1)
-    if len(person) == 3:
-        s = Student(person[1], person[0], person[2])
+try:
+    for line in open(sys.argv[1]):
+        line = line.strip('\n')
+        person = line.split('|')
+        if len(person) == 2:
+            s = Student(person[1], person[0], -1)
+        if len(person) == 3:
+            s = Student(person[1], person[0], person[2])
+
+except IOError:
+    print 'An error occurred trying to open the file. Please make sure that it exists and try again.'
+    sys.exit()
 
 print '/------------------------------\\'
 print '| GDS:                         |'
