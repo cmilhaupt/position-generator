@@ -4,4 +4,4 @@ Randomly generates positions for the non-GDS members of the trumpet section for 
 
 ## Usage
 
-<pre><code>./generate.py \<file with formatted list of names\></pre></code>
+<pre><code>./generate.py &ltfile with formatted list of names></pre></code>
