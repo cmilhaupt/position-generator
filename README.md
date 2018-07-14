@@ -9,7 +9,7 @@ Randomly generates positions for the non-GDS members of the trumpet section for 
 ## Input File Format
 
 The file you pass to the script should be in the format of:
-<pre><code>&ltassignment code>|&ltfirst last>|&ltoptional number></pre></code>
+<pre><code>&ltassignment code>|&ltfirst last>|&lt*optional number*></pre></code>
 The possible assignment codes are:
 
 | Assignment Code | Meaning |
