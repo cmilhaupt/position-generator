@@ -25,14 +25,16 @@ def getStudentByNumber(num):
 
 class Student:
     def __init__(self, name, role, num):
-        self.name = name;
+        self.name = name
+        fullname = name.split(' ')
+        self.last = fullname[1]
         self.tid = num
         if role == 'g':
             gds.append(self)
-            return
-        students.append(self)
-        if role == 'l' or role == 'r':
-            constants.append(self)
+        else:
+            students.append(self)
+            if role == 'l' or role == 'r':
+                constants.append(self)
 
 
 for line in open('rosters/tmp-master-roster.txt'):
