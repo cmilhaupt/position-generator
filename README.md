@@ -11,9 +11,12 @@ Randomly generates positions for the non-GDS members of the trumpet section for 
 The file you pass to the script should be in the format of:
 <pre><code>&ltassignment code>|&ltfirst last>|&ltoptional number></pre></code>
 The possible assignment codes are:
-> m: marcher
-> c: constant
-> g: GDS
+
+| Assignment Code | Meaning |
+| --------------- |:-------:|
+| m               | Signifies a marcher who will be randomly switched around |
+| c               | Signifies a constant marcher |
+| g               | Signifies a member of GDS for the week |
 
 Constant in this instance refers to a 1, 10, 5, or 6, or people whose spots you wouldn't want to change. GDS are not included in the assignment process and marchers are people who will be randomly switched around.
 
