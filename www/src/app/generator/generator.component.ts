@@ -63,7 +63,6 @@ export class GeneratorComponent implements OnInit {
                 console.log('Error with student role');
             }
         }
-        console.log(this.constants);
         this.shuffleStudents();
     }
     
@@ -82,7 +81,6 @@ export class GeneratorComponent implements OnInit {
             this.students.push(constant);
         }
        
-        console.log(this.students); 
         this.assign();
     }
 
@@ -97,15 +95,11 @@ export class GeneratorComponent implements OnInit {
     }
     
     idIsFree(i: number): boolean {
-        console.log('Checking: ' + i);
         for(var student of this.students) {
-            console.log(student.id);
             if(student.id == i) {
-                console.log('Id is taken');
                 return false;
             }
         }
-        console.log('Id is free');
         return true;
     }
 
