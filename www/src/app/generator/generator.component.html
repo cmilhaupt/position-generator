@@ -6,7 +6,7 @@
         <textarea #areaInput matInput rows="30" placeholder="Paste your formatted list here" (input)="data"></textarea>
         <button mat-raised-button style="float: right;" type="submit" (click)="load(areaInput.value)">Submit</button>
     </mat-form-field>
-    <div class="right-side" *ngFor="let line of list">
-        {{line}}
+    <div class="right-side" *ngFor="let student of students">
+        {{student.last}}, {{student.first}} - {{tag}}{{student.id}}
     </div>
 </mat-grid-list>

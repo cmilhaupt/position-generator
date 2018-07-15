@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneratorComponent implements OnInit {
 
+    tag: string;
     data: any;
-    gds: Student[] = new Array();
+    gds: Student[] = [];
     students: Student[] = [];
     constants: Student[] = [];
-    list: string = [];
+    list: string[] = [];
 
     constructor() { }
 
@@ -19,6 +20,10 @@ export class GeneratorComponent implements OnInit {
     }
 
     load(e) {
+        this.gds = [];
+        this.students = [];
+        this.constants = [];
+        this.list = [];
         this.data = e.split("\n");
         this.process();
     }
@@ -31,7 +36,13 @@ export class GeneratorComponent implements OnInit {
     }
 
     process() {
+        var check: boolean = true;
         for(var student of this.data) {
+            if(check) {
+                this.tag = student;
+                check = false;
+                continue;
+            }
             var s = student.split('|');
             var stud: Student;
             if (s.length === 2) {
@@ -52,6 +63,62 @@ export class GeneratorComponent implements OnInit {
                 console.log('Error with student role');
             }
         }
+        console.log(this.constants);
+        this.shuffleStudents();
+    }
+    
+    shuffleStudents() {
+        var m = this.students.length, t, i;
+
+        while(m) {
+            i = Math.floor(Math.random() * m--);
+
+            t = this.students[m];
+            this.students[m] = this.students[i];
+            this.students[i] = t;
+        }
+        
+        for(var constant of this.constants) {
+            this.students.push(constant);
+        }
+       
+        console.log(this.students); 
+        this.assign();
+    }
+
+    assign() {
+        var j = 0;
+        for(var i = 0; i < this.students.length; i++) {
+            if(this.idIsFree(i + 10)) {
+                this.students[j++].id = i + 10;
+            }
+        }
+        this.sort();
+    }
+    
+    idIsFree(i: number): boolean {
+        console.log('Checking: ' + i);
+        for(var student of this.students) {
+            console.log(student.id);
+            if(student.id == i) {
+                console.log('Id is taken');
+                return false;
+            }
+        }
+        console.log('Id is free');
+        return true;
+    }
+
+    sort() {
+        this.students.sort(this.compare);
+    }
+
+    compare(a, b) {
+        if (a.last < b.last)
+            return -1;
+        if (a.last > b.last)
+            return 1;
+        return 0;
     }
 }
 
