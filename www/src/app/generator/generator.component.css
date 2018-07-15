@@ -1,0 +1,14 @@
+.input-style {
+    width: 50%;
+    float: left;
+    border-right-style: solid;
+    padding-right: 10px;
+}
+
+.button {
+    float: right;
+}
+
+.right-side {
+    padding: 10px;
+}

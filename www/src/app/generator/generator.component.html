@@ -1,0 +1,12 @@
+<p>
+    Please read <a href="http://github.com/cmilhaupt/position-generator/README.md">here</a> about how to format the input.
+</p>
+<mat-grid-list cols="2">
+    <mat-form-field class="input-style">
+        <textarea #areaInput matInput rows="30" placeholder="Paste your formatted list here" (input)="data"></textarea>
+        <button mat-raised-button style="float: right;" type="submit" (click)="load(areaInput.value)">Submit</button>
+    </mat-form-field>
+    <div class="right-side" *ngFor="let line of list">
+        {{line}}
+    </div>
+</mat-grid-list>
