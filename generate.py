@@ -13,6 +13,7 @@ def usage():
 if len(sys.argv) != 2:
     usage()
 
+tag = ''
 students = []
 gds = []
 constants = []
@@ -43,8 +44,13 @@ class Student:
 
 
 try:
+    check = True;
     for line in open(sys.argv[1]):
         line = line.strip('\n')
+        if check:
+            tag = line
+            check = False
+            continue
         person = line.split('|')
         if len(person) == 2:
             s = Student(person[1], person[0], -1)
@@ -86,4 +92,4 @@ students.sort(key=lambda x: x.last)
 
 for student in students:
     sys.stdout.write(student.last + ", " + student.first + ": ")
-    print "T" + str(student.tid)
+    print tag + str(student.tid)
